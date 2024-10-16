@@ -11,29 +11,5 @@ function getBooksByAuthor(books, author) {
     { title: "The Idiot", author: "Fyodor Dostoevsky", isAvailable: false }
   ];
   
-  console.log(getBooksByAuthor(books, "Fyodor Dostoevsky"));
   
-  //Second part(explain)
-  function countAvailableBooks(books) {
-    return books.filter(book => book.isAvailable).length;
-  }
-  console.log(countAvailableBooks(books));
-  
-  //Third part
-  function lendBook(books, title) {
-    const book = books.find(book => book.title === title);
-    
-    if (book) {
-      if (book.isAvailable) {
-        book.isAvailable = false;
-        return `The book ${title} has been successfully lent!`;
-      } else {
-        return `The book ${title} is not available!`;
-      }
-    } else {
-      return `The book ${title} does not exist in the library!`;
-    }
-  }
-  console.log(lendBook(books, "War and Peace")); 
-  console.log(books[0].isAvailable); 
   
