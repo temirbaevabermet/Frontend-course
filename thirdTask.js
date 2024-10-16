@@ -13,7 +13,7 @@ function getBooksByAuthor(books, author) {
   
   console.log(getBooksByAuthor(books, "Fyodor Dostoevsky"));
   
-  //Second part
+  //Second part(explain)
   function countAvailableBooks(books) {
     return books.filter(book => book.isAvailable).length;
   }
