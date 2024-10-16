@@ -1,7 +1,7 @@
 async function fetchUsersWithPosts() {
     try {
         // 1)Fetch a list of users using an API (e.g., https://jsonplaceholder.typicode.com/users)
-        const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users');
+        const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users'); //6) The function already used async/await for the API requests. 
         if (!usersResponse.ok) throw new Error('Failed to fetch users');
 
         const users = await usersResponse.json();
