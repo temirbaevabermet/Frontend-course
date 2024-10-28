@@ -127,3 +127,25 @@ h2{
     left: 15px;
 
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .menu-grid {
+        flex-direction: column;
+    }
+
+    .menu-item {
+        width: 90%;
+    }
+
+    .imgStyle {
+        width: 100%;
+    }
+
+    .categories {
+        margin-top: 50px;
+    }
+}
