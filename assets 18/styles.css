@@ -100,3 +100,30 @@ body {
     color: #58508d;
     font-weight: bold;
 }
+.imgStyle{
+    width: 310px;
+    height: auto;
+    margin: auto;
+    display: block;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+div .textPhoto{
+    position: relative;
+
+}
+h1{
+    position: absolute;
+    color: white;
+    font-size: 25px;
+    top: 75px;
+    left: 15px;
+}
+h2{
+    position: absolute;
+    color: white;
+    font-size: 13px;
+    top: 115px;
+    left: 15px;
+
+}
