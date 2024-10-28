@@ -149,3 +149,43 @@ h2{
         margin-top: 50px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .menu-item h3 {
+        font-size: 14px;
+    }
+
+    .imgStyle {
+        width: 100%;
+    }
+
+    .categories {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .category-btn {
+        padding: 10px 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+        top: 50px;
+    }
+
+    h2 {
+        font-size: 11px;
+        top: 80px;
+    }
+}
