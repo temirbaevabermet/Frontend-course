@@ -142,11 +142,17 @@ h2{
     }
 
     .imgStyle {
-        width: 100%;
+        width: 90%;
     }
 
     .categories {
         margin-top: 50px;
+    }
+    h1{
+        left: 100px;
+    }
+    h2{
+        left:100px;
     }
 }
 
