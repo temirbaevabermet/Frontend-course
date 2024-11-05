@@ -1,5 +1,5 @@
+import { fakeTranslate } from './fakeTranslate.js'; //импортируем метод из fakeTranslate.js
 let favorites = [];
-
 // Функция для перевода слова с использованием fakeTranslate
 async function translateWord() {
     const word = document.getElementById("wordInput").value.trim();
@@ -8,18 +8,21 @@ async function translateWord() {
         return;
     }
     try {
-        const translation = // Используйте fakeTranslate
+        const translation = await fakeTranslate(word); // Используем fakeTranslate
         document.getElementById("translationResult").innerText = translation;
-        // Разблокировать кнопку сохранения
+        document.getElementById("saveButton").disabled = false;// Разблокировываем кнопку сохранения
     } catch (error) {
-        // Покажите сообщение об ошибке
+        document.getElementById("translationResult").innerText = error; // Здесь мы показываем сообщение об ошибке
+        document.getElementById("saveButton").disabled = true; // Здесь мы заблокировываем кнопку сохранения, если слово нет в словаре 
+        
     }
 }
-
 // Сохранение перевода в избранное
 function saveTranslation() {
     const word = document.getElementById("wordInput").value.trim();
     const translation = document.getElementById("translationResult").innerText;
+
+    if (!word || !translation) return;
 
     favorites.push({ word, translation });
     updateFavorites();
@@ -28,7 +31,6 @@ function saveTranslation() {
     alert(`Сохранено: ${word} - ${translation}`);
 }
 
-// Обновление списка избранного
 function updateFavorites() {
     const favoritesList = document.getElementById("favoritesList");
     favoritesList.innerHTML = ""; // Очистить список
@@ -54,9 +56,11 @@ function updateFavorites() {
 
 // Удаление перевода из избранного
 function removeFavorite(index) {
-    // Удалите элемент из favorites
+    favorites.splice(index, 1);  // Удаляем элемент из массива
     updateFavorites();
     alert("Перевод удален из избранного.");
 }
 
-// Добавьте обработчики событий для кнопок
+// Обработчики событий для кнопок
+document.getElementById("translateButton").addEventListener("click", translateWord); // При нажатии на кнопку "Перевести"/"translateButton" активируем метод translateWord() 
+document.getElementById("saveButton").addEventListener("click", saveTranslation); // При нажатии на кнопку "Сохранить в избранное"/""saveButton"" активируем метод saveTranslation()

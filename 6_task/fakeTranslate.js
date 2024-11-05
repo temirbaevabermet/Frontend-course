@@ -22,13 +22,18 @@ const dictionary = {
     "computer": "компьютер"
 };
 
-// Допишите код для fakeTranslate
 function fakeTranslate(word) {
     return new Promise((resolve, reject) => {
         // Имитация асинхронной операции с задержкой
         setTimeout(() => {
-           
+            if (dictionary[word]) {    //Проверяет есть ли слово в словаре
+                resolve(dictionary[word]);
+            } else {
+                reject(`Перевод для слова "${word}" не найден.`); 
+            }
         }, 1000); // Задержка 1 секунда
     });
 }
+
+export { fakeTranslate }; // Экспортируем метод fakeTranslate чтобы использовать его уже в другом классе "script.js"
 
