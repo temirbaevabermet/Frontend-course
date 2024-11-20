@@ -1,6 +1,10 @@
-import React from 'react';;
-
+import React, { useState } from 'react';
 const PersonalInfo = () => {
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+        setMessage('Кнопка была нажата!');
+    };
     const person = {
         name: "Темирбаева Бермет",
         age: "25 лет",
@@ -9,7 +13,6 @@ const PersonalInfo = () => {
         experience: "3 года",
         education: "Компьютерная инженерия",
     };
-
     return (
         <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '5px', maxWidth: '400px', margin: 'auto' }}>
             <h1>Информация о человеке</h1>
@@ -19,7 +22,10 @@ const PersonalInfo = () => {
             <p>Компания: {person.company}</p>
             <p>Опыт работы: {person.experience}</p>
             <p>Образование: {person.education}</p>
-            <button style={{ marginTop: '20px'}}>Кнопка</button>
+            {message && <p style={{ color: 'red' }}>{message}</p>}
+            <button style={{ marginTop: '20px' }} onClick={handleClick}>
+                Кнопка
+            </button>
         </div>
     );
 };
