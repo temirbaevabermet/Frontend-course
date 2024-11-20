@@ -19,6 +19,7 @@ const PersonalInfo = () => {
             <p>Компания: {person.company}</p>
             <p>Опыт работы: {person.experience}</p>
             <p>Образование: {person.education}</p>
+            <button style={{ marginTop: '20px'}}>Кнопка</button>
         </div>
     );
 };
