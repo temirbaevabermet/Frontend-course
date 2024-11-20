@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 const PersonalInfo = () => {
     const [message, setMessage] = useState('');
-
+    const [position, setPosition] = useState('Junior Back-end developer');
     const handleClick = () => {
-        setMessage('Кнопка была нажата!');
+        setMessage('Должность успешно изменена!');
+        setPosition('Senior Back-end developer');
+        
     };
     const person = {
         name: "Темирбаева Бермет",
@@ -18,7 +20,7 @@ const PersonalInfo = () => {
             <h1>Информация о человеке</h1>
             <p>Имя: {person.name}</p>
             <p>Возраст: {person.age}</p>
-            <p>Должность: {person.position}</p>
+            <p>Должность: {position}</p>
             <p>Компания: {person.company}</p>
             <p>Опыт работы: {person.experience}</p>
             <p>Образование: {person.education}</p>
