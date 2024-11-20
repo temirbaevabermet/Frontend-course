@@ -24,7 +24,7 @@ const PersonalInfo = () => {
             <p>Образование: {person.education}</p>
             {message && <p style={{ color: 'red' }}>{message}</p>}
             <button style={{ marginTop: '20px' }} onClick={handleClick}>
-                Кнопка
+                Повысить в должности
             </button>
         </div>
     );
