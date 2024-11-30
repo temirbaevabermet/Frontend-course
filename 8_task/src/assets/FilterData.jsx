@@ -28,6 +28,13 @@ const FilterData = () => {
   return (
     <div>
       <h1>Data filter</h1>
+      <input
+        type="text"
+        placeholder="Enter text to search..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)} // Обновляем состояние строки поиска
+        style={{ padding: '10px', width: '300px', marginBottom: '20px' }} //Добавляем немного дизайна
+      />
     </div>
   );
 };
