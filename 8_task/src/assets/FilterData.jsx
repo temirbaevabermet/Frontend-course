@@ -45,6 +45,21 @@ const FilterData = () => {
         onChange={(e) => setSearch(e.target.value)} // Обновляем состояние строки поиска
         style={{ padding: '10px', width: '300px', marginBottom: '20px' }} //Добавляем немного дизайна
       />
+      
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {filteredData.map((item, index) => (
+          <li key={index}
+          style={{
+            backgroundColor: '#f9f9f9',
+            padding: '10px',
+            margin: '5px 0',
+            borderRadius: '5px',
+            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+          }} //Здесь тоже добавляем немного дизайна
+          >{item}</li>
+        ))}
+      </ul>
+    
     </div>
   );
 };
