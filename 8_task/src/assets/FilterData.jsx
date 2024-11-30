@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const FilterData = () => {
   const [data, setData] = useState([]); // Исходный список данных
   const [search, setSearch] = useState(""); // Строка поиска
+  const [filteredData, setFilteredData] = useState([]); // Фильтрованный список
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,10 +21,19 @@ const FilterData = () => {
         "Ocean",
       ];
       setData(fakeData);
+      setFilteredData(fakeData); // Изначально показываем все данные
     };
 
     fetchData();
   }, []); 
+  
+  // Обновляем фильтрованный список при изменении строки поиска
+  useEffect(() => {
+    const filtered = data.filter((item) =>
+      item.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredData(filtered);
+  }, [search, data]);
   
   return (
     <div>
