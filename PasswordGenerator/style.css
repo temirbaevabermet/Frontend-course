@@ -45,3 +45,10 @@ button:hover {
     font-size: 1.2em;
     word-break: break-all;
 }
+.copy-btn {
+    margin-top: 10px;
+    background-color: #28a745;
+}
+.copy-btn:hover {
+    background-color: #1e7e34;
+}
