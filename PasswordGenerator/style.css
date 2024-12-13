@@ -12,7 +12,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 h1 {
@@ -36,13 +36,18 @@ button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
 }
 button:hover {
     background-color: #0056b3;
 }
 .output {
-    margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
     word-break: break-all;
 }
 .copy-btn {
@@ -51,4 +56,13 @@ button:hover {
 }
 .copy-btn:hover {
     background-color: #1e7e34;
+}
+.history {
+    margin-top: 20px;
+    text-align: left;
+}
+.strength {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #ea0c0c;
 }

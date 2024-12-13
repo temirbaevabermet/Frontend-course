@@ -1,40 +1,52 @@
+let passwordHistory = []; // Array to store password history
+
 // Function to generate a random password
 function generatePassword() {
-    // Get user preferences
-    const length = document.getElementById('length').value; // Password length
-    const includeUppercase = document.getElementById('uppercase').checked; // Include uppercase letters
-    const includeLowercase = document.getElementById('lowercase').checked; // Include lowercase letters
-    const includeNumbers = document.getElementById('numbers').checked; // Include numbers
-    const includeSymbols = document.getElementById('symbols').checked; // Include symbols
+    const length = document.getElementById('length').value;
+    const includeUppercase = document.getElementById('uppercase').checked;
+    const includeLowercase = document.getElementById('lowercase').checked;
+    const includeNumbers = document.getElementById('numbers').checked;
+    const includeSymbols = document.getElementById('symbols').checked;
 
-    // Character pools for password generation
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const numberChars = '0123456789';
     const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?/';
 
     let allChars = '';
-
-    // Build the character pool based on user preferences
     if (includeUppercase) allChars += uppercaseChars;
     if (includeLowercase) allChars += lowercaseChars;
     if (includeNumbers) allChars += numberChars;
     if (includeSymbols) allChars += symbolChars;
 
-    // Validate that at least one character type is selected
     if (allChars === '') {
         document.getElementById('output').textContent = 'Please select at least one character type.';
         return;
     }
     let password = '';
     for (let i = 0; i < length; i++) {
-        // Select a random character from the pool
         const randomIndex = Math.floor(Math.random() * allChars.length);
         password += allChars[randomIndex];
     }
 
-    // Display the generated password
     document.getElementById('output').textContent = password;
+    evaluateStrength(password);
+    addToHistory(password);
+}
+
+// Function to evaluate password strength
+function evaluateStrength(password) {
+    const strengthEl = document.getElementById('strength');
+    let score = 0;
+
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+    if (password.length >= 12) score++;
+
+    const strength = ['Very Weak', 'Weak', 'Moderate', 'Strong', 'Very Strong'];
+    strengthEl.textContent = `Strength: ${strength[score - 1] || 'Very Weak'}`;
 }
 
 // Function to copy the generated password to the clipboard
@@ -45,7 +57,6 @@ function copyToClipboard() {
         return;
     }
 
-    // Create a temporary input element to copy text to clipboard
     const tempInput = document.createElement('input');
     tempInput.value = output;
     document.body.appendChild(tempInput);
@@ -54,4 +65,14 @@ function copyToClipboard() {
     document.body.removeChild(tempInput);
 
     alert('Password copied to clipboard!');
+}
+
+// Function to add password to history
+function addToHistory(password) {
+    passwordHistory.push(password);
+
+    const historyEl = document.getElementById('history');
+    const listItem = document.createElement('li');
+    listItem.textContent = password;
+    historyEl.appendChild(listItem);
 }
