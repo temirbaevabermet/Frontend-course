@@ -1,21 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
+import useTaskManager from '../hooks/useTaskManager';
 
 export const TaskContext = createContext();
 
-// Define the TaskProvider component that wraps its children with the TaskContext.Provider
 const TaskProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([]);
+    // Call the useTaskManager hook to manage tasks and provide methods to add and delete tasks
+  const { tasks, addTask, deleteTask } = useTaskManager();
 
-  // Define the addTask function to add a new task to the "tasks" state
-  const addTask = (taskText) => {
-    setTasks([...tasks, { id: Date.now(), text: taskText }]);
-  };
-
-  // Return the TaskContext.Provider component with the "tasks" state and addTask function as its value
-  // The "children" prop represents all components wrapped inside this provider
+  // Provide the tasks state and methods (addTask and deleteTask) to any components wrapped by this provider
   return (
-    <TaskContext.Provider value={{ tasks, addTask }}>
-      {children}
+    <TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
+      {children} 
     </TaskContext.Provider>
   );
 };

@@ -1,14 +1,21 @@
 import React, { useContext } from 'react';
-import TaskItem from './TaskItem';
 import { TaskContext } from '../context/TaskContext';
 
 const TaskList = () => {
-  const { tasks } = useContext(TaskContext);
+  const { tasks, deleteTask } = useContext(TaskContext);
 
   return (
     <ul>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <li key={task.id}>
+          <span>{task.text}</span>
+          <button
+            className="delete-button"
+            onClick={() => deleteTask(task.id)}
+          >
+            Delete
+          </button>
+        </li>
       ))}
     </ul>
   );
