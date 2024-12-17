@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { TaskContext } from '../context/TaskContext';
 
-const AddTask = ({ onAddTask }) => {
-    // Create a state variable newTask with an initial value of an empty string
+const AddTask = () => {
+    // Access the addTask function from TaskContext using useContext hook
+  const { addTask } = useContext(TaskContext);
+
+  // Create a local state newTask to manage the input field's value
   const [newTask, setNewTask] = useState('');
 
   // Function to handle adding a new task
   const handleAdd = () => {
-    if (newTask.trim()) {
-      onAddTask(newTask);
+    if (newTask.trim()) {  // Ensure the input is not empty or whitespace
+      addTask(newTask);
       setNewTask('');
     }
   };
@@ -15,14 +19,14 @@ const AddTask = ({ onAddTask }) => {
   return (
     <div>
       <input
-        type="text"    // Specifies that this is a text input field
-        value={newTask}     // Links the input field's value to the newTask state
-        onChange={(e) => setNewTask(e.target.value)}    // Updates the state whenever the input value changes
-        placeholder="Add a new task"   // Displays placeholder text when the input is empty
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Add a new task"
       />
       <button onClick={handleAdd}>Add Task</button>
     </div>
   );
 };
 
-export default AddTask;    // Export the component for use in other parts of the application
+export default AddTask;

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TaskItem from './TaskItem';
+import { TaskContext } from '../context/TaskContext';
 
-const TaskList = ({ tasks }) => {   
+const TaskList = () => {
+  const { tasks } = useContext(TaskContext);
+
   return (
     <ul>
-      {tasks.map((task) => (   // Use the map() function to iterate over the "tasks" array
-        <TaskItem key={task.id} task={task} />  // Render a TaskItem for each task, passing the task as a prop
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task} />
       ))}
     </ul>
   );
